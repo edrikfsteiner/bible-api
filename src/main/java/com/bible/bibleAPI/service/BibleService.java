@@ -1,5 +1,7 @@
 package com.bible.bibleAPI.service;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,38 @@ public class BibleService {
         this.restTemplate = restTemplate;
     }
 
+    private String formatResponse(String response) {
+        JSONObject jsonResponse = new JSONObject(response);
+
+        String reference = jsonResponse.getString("reference");
+        JSONArray verses = jsonResponse.getJSONArray("verses");
+        StringBuilder formattedResponse = new StringBuilder();
+
+        formattedResponse.append("Reference: ").append(reference).append("\n\n");
+
+        for (int i = 0; i < verses.length(); i++) {
+            JSONObject verse = verses.getJSONObject(i);
+            String bookName = verse.getString("book_name");
+            int chapter = verse.getInt("chapter");
+            int verseNumber = verse.getInt("verse");
+            String text = verse.getString("text");
+
+            formattedResponse.append(bookName)
+                             .append(" ")
+                             .append(chapter)
+                             .append(":")
+                             .append(verseNumber)
+                             .append(" - ")
+                             .append(text)
+                             .append("\n");
+        }
+
+        String fullText = jsonResponse.getString("text");
+        formattedResponse.append("\nFull Text:\n").append(fullText);
+
+        return formattedResponse.toString();
+    }
+
     public ResponseEntity<?> getBibleVerse(String book, Integer chapter, Integer verse) {
         if (book.equals("")) {
             return new ResponseEntity<>("Invalid book", HttpStatus.BAD_REQUEST);
@@ -24,7 +58,7 @@ public class BibleService {
             String url = "https://bible-api.com/" + book + "+" + chapter + ":" + verse;
             String response = restTemplate.getForObject(url, String.class);
 
-            return new ResponseEntity<>(response, HttpStatus.OK);
+            return new ResponseEntity<>(formatResponse(response), HttpStatus.OK);
         }
     }
 
@@ -44,7 +78,7 @@ public class BibleService {
             String url = "https://bible-api.com/" + book + "+" + chapter + ":" + verseStart + "-" + verseEnd;
             String response = restTemplate.getForObject(url, String.class);
 
-            return new ResponseEntity<>(response, HttpStatus.OK);
+            return new ResponseEntity<>(formatResponse(response), HttpStatus.OK);
         }
     }
 
@@ -55,7 +89,7 @@ public class BibleService {
             String url = "https://bible-api.com/" + book + range;
             String response = restTemplate.getForObject(url, String.class);
 
-            return new ResponseEntity<>(response, HttpStatus.OK);
+            return new ResponseEntity<>(formatResponse(response), HttpStatus.OK);
         }
     }
 
@@ -66,7 +100,7 @@ public class BibleService {
             String url = "https://bible-api.com/" + book + "+" + range + "?translation=" + translate;
             String response = restTemplate.getForObject(url, String.class);
 
-            return new ResponseEntity<>(response, HttpStatus.OK);
+            return new ResponseEntity<>(formatResponse(response), HttpStatus.OK);
         }
     }
 }
