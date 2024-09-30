@@ -64,7 +64,7 @@ Este é um serviço web desenvolvido em Java com Spring que permite buscar vers�
   GET /api/john-3:16
   ```
 - **Resposta:**
-  ```json
+  ```
   Reference: John 3:16
 
   John 3:16 - 
@@ -86,7 +86,7 @@ Este é um serviço web desenvolvido em Java com Spring que permite buscar vers�
   GET /api/romans+12:1-2
   ```
 - **Resposta:**
-  ```json
+  ```
   Reference: Romans 12:1-2
 
   Romans 12:1 - Therefore I urge you, brothers, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God, which is your spiritual service.
@@ -112,7 +112,7 @@ Este é um serviço web desenvolvido em Java com Spring que permite buscar vers�
     }
   ```
 - **Resposta:**
-  ```json
+  ```
   Reference: John 3:16
 
   John 3:16 - 
@@ -139,7 +139,7 @@ Este é um serviço web desenvolvido em Java com Spring que permite buscar vers�
   }
   ```
 - **Resposta:**
-  ```json
+  ```
   Reference: Romans 12:1-2
 
   Romans 12:1 - Therefore I urge you, brothers, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God, which is your spiritual service.
@@ -164,7 +164,7 @@ Este é um serviço web desenvolvido em Java com Spring que permite buscar vers�
   }
   ```
 - **Resposta:**
-  ```json
+  ```
   Reference: Romans 12:1-2,5-7,9,13:1-9,10
 
   Romans 12:1 - Therefore I urge you, brothers, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God, which is your spiritual service.
@@ -190,7 +190,7 @@ Este é um serviço web desenvolvido em Java com Spring que permite buscar vers�
   }
   ```
 - **Resposta:**
-  ```json
+  ```
   Reference: Romanos 12:1-2,5-7,9,13:1-9,10
 
   Romanos 12:1 - Rogo-vos pois, irmãos, pela compaixão de Deus, que apresenteis os vossos corpos como um sacrifício vivo, santo e agradável a Deus, que é o vosso culto racional.   
