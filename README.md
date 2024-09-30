@@ -198,7 +198,7 @@ Este é um serviço web desenvolvido em Java com Spring que permite buscar vers�
   ```json
   {
     "book": "romans",
-    "ranges": "12:1-2,5-7,9,13:1-9&10"
+    "range": "12:1-2,5-7,9,13:1-9&10"
   }
   ```
 - **Resposta:**
@@ -239,7 +239,7 @@ Este é um serviço web desenvolvido em Java com Spring que permite buscar vers�
   ```json
   {
     "book": "romans",
-    "ranges": "12:1-2,5-7,9,13:1-9&10",
+    "range": "12:1-2,5-7,9,13:1-9&10",
     "translate": "almeida"
   }
   ```
